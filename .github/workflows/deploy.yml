@@ -38,6 +38,22 @@ jobs:
       - name: Build Next.js site
         run: npm run build
 
+      - name: Verify static export
+        run: |
+          echo "Checking generated static files..."
+          test -f out/index.html
+          echo "Homepage found."
+
+          if [ -d "out/services" ]; then
+            echo "Services directory found."
+            find out/services -maxdepth 3 -type f | sort
+          fi
+
+          if [ -d "out/case-studies" ]; then
+            echo "Case studies directory found."
+            find out/case-studies -maxdepth 3 -type f | sort
+          fi
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
