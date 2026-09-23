@@ -62,7 +62,7 @@ export default function Header() {
             />
 
             <Image
-              src="/matestlab-logo-transparent.png"
+              src="/LabProject/matestlab-logo-transparent.png"
               alt="Matestlab Laboratory"
               width={330}
               height={120}
