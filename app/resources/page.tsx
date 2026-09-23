@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
@@ -36,7 +38,7 @@ export default function ResourcesPage() {
           <div className="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8">
             <div className="grid gap-4 md:grid-cols-2">
               {resources.map((resource, index) => (
-                <a
+                <Link
                   key={resource}
                   href="#"
                   className="rounded-2xl border border-slate-200 bg-white p-6 hover:border-slate-400"
@@ -52,7 +54,7 @@ export default function ResourcesPage() {
                   <p className="mt-4 text-sm text-slate-500">
                     Read technical resource →
                   </p>
-                </a>
+                </Link>
               ))}
             </div>
           </div>

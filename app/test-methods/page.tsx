@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
@@ -195,7 +195,7 @@ export default function TestMethodsPage() {
             {/* Results */}
             <div className="mt-5 grid gap-3">
               {results.map((method, index) => (
-                <a
+                <Link
                   key={method.standard}
                   href={`/test-methods/${method.standard
                     .toLowerCase()
@@ -273,7 +273,7 @@ export default function TestMethodsPage() {
                       VIEW →
                     </span>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
 

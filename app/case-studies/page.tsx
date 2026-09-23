@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
@@ -42,7 +44,7 @@ export default function CaseStudiesPage() {
           <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <div className="grid gap-5 lg:grid-cols-3">
               {cases.map((item, index) => (
-                <a
+                <Link
                   key={item.slug}
                   href={`/case-studies/${item.slug}`}
                   className="overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:-translate-y-1 hover:shadow-lg"
@@ -66,7 +68,7 @@ export default function CaseStudiesPage() {
                       Read case study →
                     </p>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           </div>

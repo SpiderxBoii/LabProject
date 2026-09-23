@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
@@ -31,7 +33,7 @@ export default function IndustriesPage() {
                   .replaceAll("&", "and");
 
                 return (
-                  <a
+                  <Link
                     key={industry}
                     href={`/industries/${slug}`}
                     className="rounded-2xl border border-slate-200 bg-white p-7 transition hover:-translate-y-1 hover:shadow-lg"
@@ -48,7 +50,7 @@ export default function IndustriesPage() {
                       Explore materials, applications, relevant services and
                       applicable testing methods.
                     </p>
-                  </a>
+                  </Link>
                 );
               })}
             </div>
