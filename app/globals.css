@@ -2,25 +2,638 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: #0f172a;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* =========================================================
+   PREMIUM HERO ANIMATIONS
+========================================================= */
+
+@keyframes heroGridMove {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(36px, 36px, 0);
+  }
+
+  100% {
+    transform: translate3d(72px, 72px, 0);
+  }
+}
+
+.hero-grid {
+  animation: heroGridMove 24s linear infinite;
+}
+
+/* Ambient glow */
+
+@keyframes heroGlowPulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.08);
+  }
+}
+
+.hero-glow {
+  animation: heroGlowPulse 8s ease-in-out infinite;
+}
+
+.hero-glow-right {
+  animation-duration: 10s;
+}
+
+/* Large technical rings */
+
+@keyframes heroRingRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes heroRingRotateReverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.hero-ring {
+  animation: heroRingRotate 30s linear infinite;
+}
+
+.hero-ring-reverse {
+  animation: heroRingRotateReverse 22s linear infinite;
+}
+
+.hero-ring-small {
+  animation: heroRingRotate 18s linear infinite;
+}
+
+/* Center glow */
+
+@keyframes heroCenterPulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+
+  50% {
+    opacity: 0.75;
+    transform: translate(-50%, -50%) scale(1.12);
+  }
+}
+
+.hero-center-glow {
+  animation: heroCenterPulse 5s ease-in-out infinite;
+}
+
+/* Background scanning line */
+
+@keyframes heroScan {
+  0% {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.8;
+  }
+
+  50% {
+    opacity: 0.35;
+  }
+
+  85% {
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(900%);
+    opacity: 0;
+  }
+}
+
+.hero-scan {
+  animation: heroScan 8s ease-in-out infinite;
+}
+
+/* Floating particles */
+
+@keyframes heroParticleOne {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translate3d(20px, -25px, 0);
+    opacity: 0.8;
+  }
+}
+
+@keyframes heroParticleTwo {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.25;
+  }
+
+  50% {
+    transform: translate3d(-18px, 20px, 0);
+    opacity: 0.7;
+  }
+}
+
+@keyframes heroParticleThree {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.25;
+  }
+
+  50% {
+    transform: translate3d(25px, 15px, 0);
+    opacity: 0.65;
+  }
+}
+
+.hero-particle-one {
+  animation: heroParticleOne 7s ease-in-out infinite;
+}
+
+.hero-particle-two {
+  animation: heroParticleTwo 9s ease-in-out infinite;
+}
+
+.hero-particle-three {
+  animation: heroParticleThree 8s ease-in-out infinite;
+}
+
+/* Heading accent */
+
+@keyframes heroHeadingLine {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+    opacity: 0;
+  }
+
+  100% {
+    transform: scaleX(1);
+    transform-origin: left;
+    opacity: 1;
+  }
+}
+
+.hero-heading-line {
+  animation: heroHeadingLine 1.8s ease-out 0.4s forwards;
+  transform: scaleX(0);
+}
+
+/* Laboratory image scanning line */
+
+@keyframes heroImageScan {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.8;
+  }
+
+  80% {
+    opacity: 0.4;
+  }
+
+  100% {
+    transform: translateY(540px);
+    opacity: 0;
+  }
+}
+
+.hero-image-scan {
+  animation: heroImageScan 6s ease-in-out infinite;
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-grid,
+  .hero-glow,
+  .hero-ring,
+  .hero-ring-reverse,
+  .hero-ring-small,
+  .hero-center-glow,
+  .hero-scan,
+  .hero-particle-one,
+  .hero-particle-two,
+  .hero-particle-three,
+  .hero-heading-line,
+  .hero-image-scan {
+    animation: none !important;
+  }
+}
+
+/* =========================================================
+   HERO IMAGE PREMIUM MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .group,
+  .group * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =========================================================
+   TEST METHOD DETAIL PAGE
+   ========================================================= */
+
+@keyframes methodScan {
+  0% {
+    transform: translateX(-180px);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(850px);
+    opacity: 0;
+  }
+}
+
+@keyframes methodRingRotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes methodRingReverse {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+.method-scan {
+  animation: methodScan 4.5s ease-in-out infinite;
+}
+
+.method-ring-one {
+  animation: methodRingRotate 32s linear infinite;
+}
+
+.method-ring-two {
+  animation: methodRingReverse 24s linear infinite;
+}
+
+.method-request-panel {
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.method-request-panel:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 24px 70px rgba(15, 23, 42, 0.16),
+    0 0 35px rgba(34, 211, 238, 0.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .method-scan,
+  .method-ring-one,
+  .method-ring-two {
+    animation: none !important;
+  }
+
+  .method-request-panel {
+    transition: none !important;
+  }
+}
+
+/* Test Method Detail Animations */
+
+@keyframes methodScan {
+  0% {
+    transform: translateX(-180px);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(850px);
+    opacity: 0;
+  }
+}
+
+@keyframes methodRingRotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes methodRingReverse {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+.method-scan {
+  animation: methodScan 4.5s ease-in-out infinite;
+}
+
+.method-ring-one {
+  animation: methodRingRotate 32s linear infinite;
+}
+
+.method-ring-two {
+  animation: methodRingReverse 24s linear infinite;
+}
+
+.method-request-panel {
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.method-request-panel:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 24px 70px rgba(15, 23, 42, 0.16),
+    0 0 35px rgba(34, 211, 238, 0.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .method-scan,
+  .method-ring-one,
+  .method-ring-two {
+    animation: none !important;
+  }
+
+  .method-request-panel {
+    transition: none !important;
+  }
+}
+
+/* Services Page Animations */
+
+@keyframes servicesRingRotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes servicesRingReverse {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+.services-ring-one {
+  animation: servicesRingRotate 34s linear infinite;
+}
+
+.services-ring-two {
+  animation: servicesRingReverse 26s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-ring-one,
+  .services-ring-two {
+    animation: none !important;
+  }
+}
+
+/* =========================================================
+   HEADER ANIMATIONS
+   ========================================================= */
+
+@keyframes headerScan {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  45% {
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(600%);
+    opacity: 0;
+  }
+}
+
+.header-scan-line {
+  animation: headerScan 7s ease-in-out infinite;
+}
+
+@keyframes headerGridMove {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(48px, 48px, 0);
+  }
+}
+
+.header-grid {
+  animation: headerGridMove 24s linear infinite;
+}
+
+@keyframes headerButtonScan {
+  0% {
+    transform: translateX(0) skewX(-20deg);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(430%) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+.header-button-scan {
+  animation: headerButtonScan 5.5s ease-in-out infinite;
+}
+
+.header-nav-link {
+  transition:
+    color 300ms ease,
+    transform 300ms ease;
+}
+
+.header-nav-link:hover {
+  transform: translateY(-1px);
+}
+
+@keyframes headerMobileLinkIn {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.header-mobile-link {
+  animation: headerMobileLinkIn 400ms ease-out both;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .header-scan-line,
+  .header-grid,
+  .header-button-scan,
+  .header-mobile-link {
+    animation: none !important;
+  }
+
+  .header-nav-link {
+    transition: none !important;
+  }
+}
+/* Services page image animation */
+
+@keyframes servicesImageScan {
+  0% {
+    transform: translateX(0) skewX(-18deg);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(520%) skewX(-18deg);
+    opacity: 0;
+  }
+}
+
+.services-image-scan {
+  animation: servicesImageScan 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-image-scan {
+    animation: none !important;
+  }
 }
