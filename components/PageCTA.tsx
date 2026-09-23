@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface PageCTAProps {
   title?: string;
   description?: string;
@@ -19,19 +21,19 @@ export default function PageCTA({
         </p>
 
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-          <a
+          <Link
             href="/request-a-quote"
             className="rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 hover:bg-slate-200"
           >
             Request a Quote
-          </a>
+          </Link>
 
-          <a
+          <Link
             href="/contact"
             className="rounded-full border border-slate-700 px-6 py-3.5 text-sm font-semibold text-white hover:bg-white/10"
           >
             Contact Us
-          </a>
+          </Link>
         </div>
       </div>
     </section>

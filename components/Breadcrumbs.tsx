@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface BreadcrumbsProps {
   items: {
     label: string;
@@ -21,9 +23,12 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
               {index > 0 && <span>/</span>}
 
               {item.href ? (
-                <a href={item.href} className="transition hover:text-slate-950">
+                <Link
+                  href={item.href}
+                  className="transition hover:text-slate-950"
+                >
                   {item.label}
-                </a>
+                </Link>
               ) : (
                 <span className="font-medium text-slate-950">{item.label}</span>
               )}

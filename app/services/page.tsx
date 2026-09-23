@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
@@ -74,7 +75,7 @@ export default function ServicesPage() {
             {/* Services grid */}
             <div className="grid gap-px overflow-hidden border border-slate-200 bg-slate-200 md:grid-cols-2 xl:grid-cols-3">
               {services.map((service) => (
-                <a
+                <Link
                   key={service.title}
                   href={`/services/${service.title
                     .toLowerCase()
@@ -153,7 +154,7 @@ export default function ServicesPage() {
                       Explore
                     </span>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
 
