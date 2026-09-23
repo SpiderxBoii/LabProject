@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -61,12 +60,11 @@ export default function Header() {
               className="pointer-events-none absolute -inset-3 bg-cyan-400/0 blur-xl transition-all duration-500 group-hover:bg-cyan-400/[0.08]"
             />
 
-            <Image
+            <img
               src="/LabProject/matestlab-logo-transparent.png"
               alt="Matestlab Laboratory"
               width={330}
               height={120}
-              priority
               className="relative h-auto w-[125px] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:opacity-95 sm:w-[155px] lg:w-[180px]"
             />
           </Link>
